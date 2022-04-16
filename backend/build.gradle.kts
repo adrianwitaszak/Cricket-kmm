@@ -6,11 +6,11 @@ plugins {
 }
 
 
-group = "com.adwi"
+group = "com.adwi.ktor"
 version = "0.0.1"
 
 application {
-    mainClass.set("com.adwi.ApplicationKt")
+    mainClass.set("com.adwi.ktor.ApplicationKt")
 
     val isDevelopment: Boolean = project.ext.has("development")
     applicationDefaultJvmArgs = listOf(

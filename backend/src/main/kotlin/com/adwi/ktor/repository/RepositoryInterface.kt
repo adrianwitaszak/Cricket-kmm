@@ -1,6 +1,6 @@
 package com.adwi.repository
 
-import com.adwi.models.Model
+import com.adwi.ktor.models.Model
 import com.mongodb.client.MongoCollection
 import org.litote.kmongo.eq
 import org.litote.kmongo.findOne

@@ -1,7 +1,6 @@
-package com.adwi.plugins
+package com.adwi.ktor.plugins
 
-import com.adwi.di.Koin
-import com.adwi.di.appModule
+import com.adwi.ktor.di.Koin
 import io.ktor.server.application.*
 import org.koin.logger.SLF4JLogger
 

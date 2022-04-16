@@ -1,4 +1,4 @@
-package com.adwi.plugins
+package com.adwi.ktor.plugins
 
 import io.ktor.server.auth.*
 import io.ktor.util.*

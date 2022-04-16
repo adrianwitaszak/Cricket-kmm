@@ -1,15 +1,13 @@
-package com.adwi.plugins
+package com.adwi.ktor.plugins
 
-import com.adwi.di.inject
-import com.adwi.models.User
-import com.adwi.models.UserInput
+import com.adwi.ktor.di.inject
+import com.adwi.ktor.models.User
+import com.adwi.ktor.models.UserInput
 import com.adwi.repository.UserRepository
 import com.adwi.service.AuthService
 import io.ktor.server.routing.*
-import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
-import io.ktor.server.request.*
 
 fun Application.configureRouting() {
 
@@ -18,7 +16,7 @@ fun Application.configureRouting() {
 
     routing {
         get("/") {
-            call.respondText("Hello World!")
+            call.respondText("Hello World! Ad")
             val response = authService.signUp(UserInput(
                 email = "adwi@gmail.com",
                 password = "witaszak"

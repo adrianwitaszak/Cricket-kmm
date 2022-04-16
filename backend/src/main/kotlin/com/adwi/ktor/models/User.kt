@@ -1,4 +1,4 @@
-package com.adwi.models
+package com.adwi.ktor.models
 
 import kotlinx.serialization.Serializable
 

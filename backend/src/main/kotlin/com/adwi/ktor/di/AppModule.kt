@@ -1,4 +1,4 @@
-package com.adwi.di
+package com.adwi.ktor.di
 
 import com.adwi.repository.UserRepository
 import com.adwi.service.AuthService

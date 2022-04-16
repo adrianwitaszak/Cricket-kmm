@@ -1,6 +1,6 @@
 package com.adwi.service
 
-import com.adwi.models.UserProfile
+import com.adwi.ktor.models.UserProfile
 import com.adwi.repository.UserRepository
 
 class UserService(

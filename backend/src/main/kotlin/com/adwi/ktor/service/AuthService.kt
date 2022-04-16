@@ -1,9 +1,9 @@
 package com.adwi.service
 
 import at.favre.lib.crypto.bcrypt.BCrypt
-import com.adwi.models.User
-import com.adwi.models.UserInput
-import com.adwi.models.UserResponse
+import com.adwi.ktor.models.User
+import com.adwi.ktor.models.UserInput
+import com.adwi.ktor.models.UserResponse
 import com.adwi.repository.UserRepository
 import com.auth0.jwt.JWT
 import com.auth0.jwt.JWTVerifier

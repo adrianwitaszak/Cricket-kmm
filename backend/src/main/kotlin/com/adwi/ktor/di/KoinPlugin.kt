@@ -1,4 +1,4 @@
-package com.adwi.di
+package com.adwi.ktor.di
 
 import io.ktor.server.application.*
 import io.ktor.server.routing.*
