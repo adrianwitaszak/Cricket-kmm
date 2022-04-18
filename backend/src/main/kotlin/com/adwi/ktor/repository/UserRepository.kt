@@ -1,6 +1,7 @@
-package com.adwi.repository
+package com.adwi.ktor.repository
 
 import com.adwi.ktor.models.User
+import com.adwi.repository.RepositoryInterface
 import com.mongodb.client.MongoClient
 import com.mongodb.client.MongoCollection
 import org.litote.kmongo.eq

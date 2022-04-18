@@ -1,7 +1,7 @@
-package com.adwi.service
+package com.adwi.ktor.service
 
 import com.adwi.ktor.models.UserProfile
-import com.adwi.repository.UserRepository
+import com.adwi.ktor.repository.UserRepository
 
 class UserService(
     private val userRepository: UserRepository,

@@ -1,3 +1,5 @@
+import Ktor.Server.jwt
+
 plugins {
     application
     kotlin(Plugins.JVM)
@@ -37,6 +39,8 @@ tasks {
     }
 }
 
+
+
 dependencies {
     with(Ktor) {
         implementation(kMongo)
@@ -59,4 +63,8 @@ dependencies {
     with(Kotlin) {
         implementation(stdlib)
     }
+
+    val kGraphQLVersion = "0.17.14"
+    implementation("com.apurebase:kgraphql:$kGraphQLVersion")
+    implementation("com.apurebase:kgraphql-ktor:$kGraphQLVersion")
 }

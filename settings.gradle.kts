@@ -8,6 +8,6 @@ pluginManagement {
 
 rootProject.name = "Cricket-kmm"
 
-include(":androidApp")
-include(":shared")
+//include(":androidApp")
+//include(":shared")
 include(":backend")
