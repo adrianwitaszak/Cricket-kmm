@@ -23,14 +23,14 @@ kotlin {
             kotlinOptions.jvmTarget = "11"
         }
         tasks.named("jvmJar", Jar::class.java).configure {
-            archiveFileName.set("morple.jar")
+            archiveFileName.set("cricketkmm.jar")
         }
     }
     js(IR) {
-        moduleName = "site"
+        moduleName = "cricketkmm"
         browser {
             commonWebpackConfig {
-                outputFileName = "site.js"
+                outputFileName = "cricketkmm.js"
             }
         }
         binaries.executable()
