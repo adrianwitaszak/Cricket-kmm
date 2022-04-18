@@ -12,9 +12,8 @@ version = "0.0.1"
 application {
     mainClass.set("com.adwi.ktor.ApplicationKt")
 
-    val isDevelopment: Boolean = project.ext.has("development")
     applicationDefaultJvmArgs = listOf(
-        "-Dio.ktor.development=$isDevelopment",
+        "-Dio.ktor.development=true",
         "-Djdk.tls.client.protocols=TLSv1.2"
     )
 }
@@ -42,16 +41,16 @@ dependencies {
     with(Ktor) {
         implementation(kMongo)
         implementation(bCrypt)
-        with(Ktor.Server) {
-            implementation(core)
-            implementation(netty)
-            implementation(json)
-            implementation(auth)
-            implementation(jwt)
-            implementation(contentNegotiation)
-            implementation(logback)
-            implementation(test)
-        }
+    }
+    with(Ktor.Server) {
+        implementation(core)
+        implementation(netty)
+        implementation(json)
+        implementation(auth)
+        implementation(jwt)
+        implementation(contentNegotiation)
+        implementation(logback)
+        implementation(test)
     }
     with(Koin) {
         implementation(ktor)
