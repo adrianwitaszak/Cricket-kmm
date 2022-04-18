@@ -12,4 +12,6 @@ object Plugins {
     const val APOLLO = "com.apollographql.apollo3"
     const val SHADOW = "com.github.johnrengelman.shadow"
     const val SQL_DELIGHT = "com.squareup.sqldelight"
+    const val KOBWEB_APPLICATION = "com.varabyte.kobweb.application"
+    const val KOBWEB_MARKDOWN = "com.varabyte.kobwebx.markdown"
 }

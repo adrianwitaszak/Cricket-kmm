@@ -9,7 +9,7 @@ object Gradle {
 }
 
 object Kotlin {
-    const val kotlinVersion = "1.6.20-M1"
+    const val kotlinVersion = "1.6.10"
     const val coroutinesVersion = "1.6.1"
     private const val kermitLoggerVersion = "1.0.0"
     private const val serializationJsonVersion = "1.3.2"
@@ -142,7 +142,7 @@ object Android {
 }
 
 object Compose {
-    const val jetbrainsComposeVersion = "1.2.0-alpha01-dev620"
+    const val jetbrainsComposeVersion = "1.0.1"
     const val composeVersion = "1.2.0-alpha05"
     private const val composeToolingVersion = "1.1.1"
     private const val composeRuntimeVersion = "1.2.0-alpha01"

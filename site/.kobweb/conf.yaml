@@ -1,0 +1,13 @@
+site:
+  title: "Cricket"
+
+server:
+  files:
+    dev:
+      contentRoot: "build/processedResources/js/main/public"
+      script: "..build/js/packages/cricketkobweb/kotlin/cricketkobweb.js"
+      api: "build/libs/cricketkobweb.jar"
+    prod:
+      siteRoot: ".kobweb/site"
+
+  port: 8080
