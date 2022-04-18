@@ -18,14 +18,6 @@ kobweb {
 }
 
 kotlin {
-    jvm {
-        tasks.withType<KotlinCompile> {
-            kotlinOptions.jvmTarget = "11"
-        }
-        tasks.named("jvmJar", Jar::class.java).configure {
-            archiveFileName.set("cricketkmm.jar")
-        }
-    }
     js(IR) {
         moduleName = "cricketkmm"
         browser {
@@ -36,12 +28,6 @@ kotlin {
         binaries.executable()
     }
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                implementation(compose.runtime)
-            }
-        }
-
         val jsMain by getting {
             dependencies {
                 implementation(compose.web.core)
@@ -49,12 +35,6 @@ kotlin {
                 implementation(libs.kobweb.silk.core)
                 implementation(libs.kobweb.silk.icons.fa)
                 implementation(libs.kobwebx.markdown)
-             }
-        }
-
-        val jvmMain by getting {
-            dependencies {
-                implementation(libs.kobweb.api)
              }
         }
     }

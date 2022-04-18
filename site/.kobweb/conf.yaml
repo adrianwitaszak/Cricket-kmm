@@ -5,8 +5,8 @@ server:
   files:
     dev:
       contentRoot: "build/processedResources/js/main/public"
-      script: "..build/js/packages/cricketkobweb/kotlin/cricketkobweb.js"
-      api: "build/libs/cricketkobweb.jar"
+      script: "..build/js/packages/cricketkmm/kotlin/cricketkmm.js"
+      api: "build/libs/cricketkmm.jar"
     prod:
       siteRoot: ".kobweb/site"
 
