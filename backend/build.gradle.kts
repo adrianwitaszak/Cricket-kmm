@@ -1,5 +1,3 @@
-import Ktor.Server.jwt
-
 plugins {
     application
     kotlin(Plugins.JVM)
@@ -16,7 +14,7 @@ application {
 
     applicationDefaultJvmArgs = listOf(
         "-Dio.ktor.development=true",
-        "-Djdk.tls.client.protocols=TLSv1.2"
+        "-Djdk.tls.client.protocols=TLSv1.2",
     )
 }
 
@@ -52,9 +50,9 @@ dependencies {
         implementation(json)
         implementation(auth)
         implementation(jwt)
+        implementation(callLogging)
         implementation(contentNegotiation)
         implementation(logback)
-        implementation(test)
     }
     with(Koin) {
         implementation(ktor)
@@ -64,7 +62,10 @@ dependencies {
         implementation(stdlib)
     }
 
-    val kGraphQLVersion = "0.17.14"
-    implementation("com.apurebase:kgraphql:$kGraphQLVersion")
-    implementation("com.apurebase:kgraphql-ktor:$kGraphQLVersion")
+//    with(TestDependencies) {
+//        testImplementation(kotlinTest)
+//        testImplementation(ktorTest)
+//        testImplementation(mockk)
+//        testImplementation(koinTestJUnit4)
+//    }
 }

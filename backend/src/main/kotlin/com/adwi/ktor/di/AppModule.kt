@@ -1,6 +1,6 @@
 package com.adwi.ktor.di
 
-import com.adwi.ktor.repository.UserRepository
+import com.adwi.ktor.repository.userrepository.UserRepositoryImpl
 import com.adwi.ktor.service.AuthService
 import com.adwi.ktor.service.JwtConfig
 import com.adwi.ktor.service.UserService
@@ -13,7 +13,7 @@ private val mongoUri = System.getenv("MONGO_URI") ?: InvalidKeyException("Can't 
 val appModule = module {
     single { JwtConfig("secret") }
     single { KMongo.createClient("mongodb+srv://adrianwitaszak:Anabelle2013@cricket.hwwlg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority") }
-    single { UserRepository(get()) }
+    single { UserRepositoryImpl(get()) }
     single { UserService(get()) }
     single { AuthService(get(), get()) }
 }

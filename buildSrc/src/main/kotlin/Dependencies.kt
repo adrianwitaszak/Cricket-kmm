@@ -32,7 +32,7 @@ object Apollo {
 }
 
 object Koin {
-    private const val version = "3.2.0-beta-1"
+    const val version = "3.2.0-beta-1"
     const val core = "io.insert-koin:koin-core:$version"
     const val android = "io.insert-koin:koin-android:$version"
     const val compose = "io.insert-koin:koin-androidx-compose:$version"
@@ -43,7 +43,7 @@ object Koin {
 }
 
 object Ktor {
-    private const val version = "2.0.0"
+     const val version = "2.0.0"
     private const val logbackVersion = "1.2.11"
     private const val bCryptVersion = "0.9.0"
     private const val mongoVersion = "4.5.1"
@@ -59,11 +59,11 @@ object Ktor {
         const val core = "io.ktor:ktor-server-core-jvm:$version"
         const val netty = "io.ktor:ktor-server-netty-jvm:$version"
         const val json = "io.ktor:ktor-serialization-kotlinx-json-jvm:$version"
+        const val callLogging = "io.ktor:ktor-server-call-logging:$version"
         const val contentNegotiation = "io.ktor:ktor-server-content-negotiation-jvm:$version"
         const val auth = "io.ktor:ktor-server-auth-jvm:$version"
         const val jwt = "io.ktor:ktor-server-auth-jwt-jvm:$version"
         const val logback = "ch.qos.logback:logback-classic:$logbackVersion"
-        const val test = "io.ktor:ktor-server-tests:$version"
     }
 
     const val bCrypt = "at.favre.lib:bcrypt:$bCryptVersion"
@@ -194,12 +194,14 @@ object TestDependencies {
     const val XTruth = "1.4.0"
     const val GoogleTruth = "1.0.1"
     const val junit5 = "5.7.2"
-    const val mockkVersion = "1.12.0"
+    const val mockkVersion = "1.12.3"
     const val mockito = "4.0.0"
     const val rules = "1.4.0"
     const val junit4Version = "4.13.1"
     const val junit4KtxVersion = "1.1.3"
 
+    const val ktorTest = "io.ktor:ktor-server-tests:${Ktor.version}"
+    const val kotlinTest = ("org.jetbrains.kotlin:kotlin-test:${Kotlin.kotlinVersion}")
     const val coroutinesTest =
         "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Kotlin.coroutinesVersion}"
     const val composeAndroidTest = "androidx.compose.ui:ui-test-junit4:${Compose.composeVersion}"
@@ -213,6 +215,7 @@ object TestDependencies {
     const val archCore = "androidx.arch.core:core-testing:$arch_core"
     const val truth = "com.google.truth:truth:$GoogleTruth"
     const val mockk = "io.mockk:mockk:$mockkVersion"
+    const val koinTestJUnit4 = "io.insert-koin:koin-test-junit4:${Koin.version}"
 
     // Work
     const val work = "androidx.work:work-testing:${Android.workManagerVersion}"

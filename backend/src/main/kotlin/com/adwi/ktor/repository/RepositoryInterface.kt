@@ -1,4 +1,4 @@
-package com.adwi.repository
+package com.adwi.ktor.repository
 
 import com.adwi.ktor.models.Model
 import com.mongodb.client.MongoCollection

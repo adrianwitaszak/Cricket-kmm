@@ -1,13 +1,13 @@
 package com.adwi.ktor.service
 
 import com.adwi.ktor.models.UserProfile
-import com.adwi.ktor.repository.UserRepository
+import com.adwi.ktor.repository.userrepository.UserRepositoryImpl
 
 class UserService(
-    private val userRepository: UserRepository,
+    private val userRepositoryImpl: UserRepositoryImpl,
 ) {
     fun getProfile(userId: String): UserProfile {
-        val user = userRepository.getById(userId)
+        val user = userRepositoryImpl.getById(userId)
         return UserProfile(user)
     }
 }

@@ -3,11 +3,11 @@ package com.adwi.ktor.service
 import com.adwi.ktor.models.User
 import com.adwi.ktor.models.UserInput
 import com.adwi.ktor.models.UserResponse
-import com.adwi.ktor.repository.UserRepository
+import com.adwi.ktor.repository.userrepository.UserRepositoryImpl
 import java.util.*
 
 class AuthService(
-    private val repository: UserRepository,
+    private val repository: UserRepositoryImpl,
     private val jwtConfig: JwtConfig,
 ) {
     fun signIn(userInput: UserInput): UserResponse? {
