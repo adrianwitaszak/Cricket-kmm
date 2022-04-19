@@ -1,15 +1,15 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("multiplatform")
-    id("org.jetbrains.compose") version "1.0.1"
-    alias(libs.plugins.kobweb.application)
-    alias(libs.plugins.kobwebx.markdown)
+    kotlin(Plugins.KOTLIN_MULTIPLATFORM)
+    id(Plugins.JETBRAINS_COMPOSE) version "1.0.1"
+    id(Plugins.KOBWEB_APPLICATION) version "0.9.11"
+    id(Plugins.KOBWEB_MARKDOWN) version "0.9.11"
 }
 
 
-group = "com.adwi"
-version = "1.0-SNAPSHOT"
+group = Group.site
+version = Releases.site
 
 kobweb {
     index {
@@ -19,10 +19,10 @@ kobweb {
 
 kotlin {
     js(IR) {
-        moduleName = "cricketkmm"
+        moduleName = AppConfig.module
         browser {
             commonWebpackConfig {
-                outputFileName = "cricketkmm.js"
+                outputFileName = "${AppConfig.module}.js"
             }
         }
         binaries.executable()

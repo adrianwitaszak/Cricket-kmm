@@ -1,16 +1,19 @@
 plugins {
-    id("com.android.application")
-    kotlin("android")
+    id(Plugins.ANDROID_APPLICATION)
+    kotlin(Plugins.KOTLIN_ANDROID)
 }
 
+group = Group.android
+version = Releases.android
+
 android {
-    compileSdk = 32
+    compileSdk = AppConfig.compileSdk
     defaultConfig {
-        applicationId = "com.adwi.cricket.android"
-        minSdk = 21
-        targetSdk = 32
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = AppConfig.applicationId
+        minSdk = AppConfig.minSdk
+        targetSdk = AppConfig.targetSdk
+        versionCode = AppConfig.versionCode
+        versionName = AppConfig.versionName
     }
     buildTypes {
         getByName("release") {
@@ -20,7 +23,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":shared"))
+    implementation(project(Modules.SHARED))
     implementation("com.google.android.material:material:1.4.0")
     implementation("androidx.appcompat:appcompat:1.3.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.0")

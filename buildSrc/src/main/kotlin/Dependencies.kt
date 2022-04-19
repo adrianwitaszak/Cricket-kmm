@@ -185,6 +185,15 @@ object Compose {
     const val composePaging = "androidx.paging:paging-compose:$pagingCompose"
 }
 
+object Kobweb {
+    private const val version = "0.9.11"
+    const val api = "com.varabyte.kobwebx:kobweb-api:$version"
+    const val core = "com.varabyte.kobwebx:kobweb-core:$version"
+    const val silk = "com.varabyte.kobwebx:kobweb-silk:$version"
+    const val silkIcons = "com.varabyte.kobwebx:kobweb-silk-icons-fa:$version"
+    const val markdown = "com.varabyte.kobwebx:kobweb-markdown:$version"
+}
+
 object TestDependencies {
     const val test_core = "1.4.0"
     const val arch_core = "2.1.0"

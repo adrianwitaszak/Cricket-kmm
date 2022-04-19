@@ -6,11 +6,11 @@ plugins {
 }
 
 
-group = "com.adwi.ktor"
-version = "0.0.1"
+group = Group.backend
+version = Releases.backend
 
 application {
-    mainClass.set("com.adwi.ktor.ApplicationKt")
+    mainClass.set("${Group.backend}.ApplicationKt")
 
     applicationDefaultJvmArgs = listOf(
         "-Dio.ktor.development=true",
