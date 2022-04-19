@@ -1,9 +1,9 @@
 import org.gradle.api.JavaVersion
 
 object AppConfig {
-    const val module = "cricket-kmm"
+    const val module = "buddy-kmm"
     const val compileSdk = 32
-    const val applicationId = "com.adwi.cricket"
+    const val applicationId = Group.main
     const val minSdk = 21
     const val targetSdk = compileSdk
     val versionCode = Releases.android.toInt()
@@ -22,7 +22,7 @@ object Releases {
 }
 
 object Group {
-    private const val main = "com.adwi.cricket"
+     const val main = "com.adwi.buddy"
 
     const val backend = main + ".backend"
     const val site = main + ".site"

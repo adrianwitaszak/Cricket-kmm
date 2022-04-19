@@ -9,7 +9,7 @@ pluginManagement {
     }
 }
 
-rootProject.name = "Cricket-kmm"
+rootProject.name = "buddy"
 
 //include(":androidApp")
 //include(":shared")
