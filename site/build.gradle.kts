@@ -30,6 +30,7 @@ kotlin {
     sourceSets {
         val jsMain by getting {
             dependencies {
+                implementation(project(Modules.SHARED))
                 implementation(compose.web.core)
                 implementation(libs.kobweb.core)
                 implementation(libs.kobweb.silk.core)
