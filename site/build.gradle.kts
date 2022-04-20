@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     kotlin(Plugins.KOTLIN_MULTIPLATFORM)
     id(Plugins.JETBRAINS_COMPOSE) version "1.0.1"
@@ -30,7 +28,7 @@ kotlin {
     sourceSets {
         val jsMain by getting {
             dependencies {
-//                implementation(project(Modules.SHARED))
+//                implementation(project(Modules.COMMON))
                 implementation(compose.web.core)
                 implementation(libs.kobweb.core)
                 implementation(libs.kobweb.silk.core)

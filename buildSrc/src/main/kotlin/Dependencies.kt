@@ -143,9 +143,7 @@ object Android {
 
 object Compose {
     const val jetbrainsComposeVersion = "1.0.1"
-    const val composeVersion = "1.2.0-alpha05"
-    private const val composeToolingVersion = "1.1.1"
-    private const val composeRuntimeVersion = "1.2.0-alpha01"
+    const val composeVersion = "1.1.1"
     private const val composeConstrainLayoutVersion = "1.0.0-rc02"
     private const val material3 = "1.0.0-alpha07"
     private const val navigation = "2.4.0-rc01"
@@ -153,7 +151,7 @@ object Compose {
     private const val pagingCompose = "1.0.0-alpha14"
 
     const val composeCompiler = "androidx.compose.compiler:compiler:$composeVersion"
-    const val composeRuntime = "androidx.compose.runtime:runtime:$composeRuntimeVersion"
+    const val composeRuntime = "androidx.compose.runtime:runtime:$composeVersion"
     const val composeConstrainLayout =
         "androidx.constraintlayout:constraintlayout-compose:$composeConstrainLayoutVersion"
     const val composeUi = "androidx.compose.ui:ui:$composeVersion"
@@ -163,11 +161,11 @@ object Compose {
         "androidx.compose.material:material-icons-extended:$composeVersion"
     const val composeUiUtil = "androidx.compose.ui:ui-util:$composeVersion"
     const val composePreview =
-        "androidx.compose.ui:ui-tooling-preview:$composeToolingVersion"
+        "androidx.compose.ui:ui-tooling-preview:$composeVersion"
     const val composeTooling =
-        "androidx.compose.ui:ui-tooling-preview:$composeToolingVersion"
+        "androidx.compose.ui:ui-tooling-preview:$composeVersion"
     const val composeToolingDebug =
-        "androidx.compose.ui:ui-tooling:$composeToolingVersion"
+        "androidx.compose.ui:ui-tooling:$composeVersion"
     const val composeFoundation =
         "androidx.compose.foundation:foundation:$composeVersion"
     const val composeFoundationLayout =

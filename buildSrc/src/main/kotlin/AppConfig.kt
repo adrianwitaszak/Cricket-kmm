@@ -6,7 +6,7 @@ object AppConfig {
     const val applicationId = Group.main
     const val minSdk = 21
     const val targetSdk = compileSdk
-    val versionCode = Releases.android.toInt()
+    val versionCode = 1
     const val versionName = Releases.android
     const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -17,7 +17,7 @@ object AppConfig {
 object Releases {
     const val backend = "0.0.1"
     const val site = "0.0.1"
-    const val android = "0.0.1"
+    const val android = "1.0"
     const val iOS = "0.0.1"
 }
 
