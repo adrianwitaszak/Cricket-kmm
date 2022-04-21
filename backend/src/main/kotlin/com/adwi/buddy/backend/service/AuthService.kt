@@ -3,11 +3,11 @@ package com.adwi.buddy.backend.service
 import com.adwi.buddy.backend.models.User
 import com.adwi.buddy.backend.models.UserInput
 import com.adwi.buddy.backend.models.UserResponse
-import com.adwi.buddy.backend.repository.userrepository.UserRepositoryImpl
+import com.adwi.buddy.backend.repository.userrepository.UserRepository
 import java.util.*
 
 class AuthService(
-    private val repository: UserRepositoryImpl,
+    private val repository: UserRepository,
     private val jwtConfig: JwtConfig,
 ) {
     fun signIn(userInput: UserInput): UserResponse? {
