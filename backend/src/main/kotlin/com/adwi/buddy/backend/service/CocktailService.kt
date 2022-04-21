@@ -2,7 +2,7 @@ package com.adwi.buddy.backend.service
 
 import com.adwi.buddy.backend.models.Cocktail
 import com.adwi.buddy.backend.repository.CocktailRepository
-import com.adwi.buddy.backend.repository.userrepository.UserRepository
+import com.adwi.buddy.backend.repository.UserRepository
 
 class CocktailService(
     private val cocktailRepository: CocktailRepository,

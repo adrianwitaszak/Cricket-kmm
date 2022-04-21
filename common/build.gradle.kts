@@ -56,30 +56,27 @@ kotlin {
 //    }
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                with(Kotlin) {
-                    implementation(coroutinesCore)
-                    implementation(kermitLogger)
-                    implementation(serializationJson)
-                }
-                implementation(Ktor.Client.clientCore)
-                implementation(SqlDelight.coroutineExtensions)
+        sourceSets["commonMain"].dependencies {
+            with(Kotlin) {
+                implementation(coroutinesCore)
+                api(kermitLogger)
+                implementation(serializationJson)
             }
+            with(Koin) {
+                api(core)
+                api(logger)
+                api(test)
+            }
+            implementation(Ktor.Client.clientCore)
+            implementation(SqlDelight.coroutineExtensions)
         }
-        val androidMain by getting {
-            dependsOn(commonMain)
-            dependencies {
-                implementation(Ktor.Client.clientOkHttp)
-                implementation(SqlDelight.androidDriver)
-            }
+        sourceSets["androidMain"].dependencies {
+            implementation(Ktor.Client.clientOkHttp)
+            implementation(SqlDelight.androidDriver)
         }
-        val jsMain by getting {
-            dependsOn(commonMain)
-            dependencies {
-                implementation(Ktor.Client.clientJs)
-                implementation(SqlDelight.sqliteJs)
-            }
+        sourceSets["jsMain"].dependencies {
+            implementation(Ktor.Client.clientJs)
+            implementation(SqlDelight.sqliteJs)
         }
         sourceSets["jvmMain"].dependencies {
 

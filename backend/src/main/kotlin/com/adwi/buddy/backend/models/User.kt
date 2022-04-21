@@ -8,7 +8,7 @@ data class User(
     val name: String = "",
     val email: String,
     val hashedPass: ByteArray,
-    val favoriteCocktails: MutableList<String>
+    val favoriteCocktails: MutableList<String> = mutableListOf()
 ) : Model {
     fun addFavorite(id: String): User {
         favoriteCocktails.add(id)
