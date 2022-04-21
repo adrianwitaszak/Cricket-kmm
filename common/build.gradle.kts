@@ -27,6 +27,8 @@ android {
 }
 
 kotlin {
+    android()
+    jvm()
     js(IR) {
         browser {
             testTask {
@@ -39,7 +41,6 @@ kotlin {
         }
         binaries.executable()
     }
-    android()
 //    iosX64()
 //    iosArm64()
 //    iosSimulatorArm64()
@@ -66,12 +67,6 @@ kotlin {
                 implementation(SqlDelight.coroutineExtensions)
             }
         }
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
-            }
-        }
-
         val androidMain by getting {
             dependsOn(commonMain)
             dependencies {
@@ -79,8 +74,6 @@ kotlin {
                 implementation(SqlDelight.androidDriver)
             }
         }
-        val androidTest by getting
-
         val jsMain by getting {
             dependsOn(commonMain)
             dependencies {
@@ -88,6 +81,15 @@ kotlin {
                 implementation(SqlDelight.sqliteJs)
             }
         }
+        sourceSets["jvmMain"].dependencies {
+
+        }
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test"))
+            }
+        }
+        val androidTest by getting
         val jsTest by getting
 
 //        val iosX64Main by getting

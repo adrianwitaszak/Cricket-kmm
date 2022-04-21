@@ -1,4 +1,4 @@
-package com.adwi.buddy.backend.repository.userrepository
+package com.adwi.buddy.backend.repository
 
 import com.adwi.buddy.backend.models.User
 import com.adwi.buddy.backend.repository.RepositoryInterface
@@ -29,7 +29,14 @@ class UserRepository(client: MongoClient) : RepositoryInterface<User> {
     }
 
     fun addCocktailToFavorites(cocktailId: String, userId: String): Boolean {
-        val user = getById(userId)
-
+        return try {
+            val user = getById(userId)
+            val updatedUser = user.addFavorite(cocktailId)
+            val remoteUser = update(updatedUser)
+            remoteUser == updatedUser
+        } catch (e: Exception) {
+            println(e)
+            false
+        }
     }
 }

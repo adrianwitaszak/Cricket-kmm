@@ -38,6 +38,7 @@ tasks {
 }
 
 dependencies {
+    implementation(project(Modules.COMMON))
     with(Ktor) {
         implementation(kMongo)
         implementation(bCrypt)

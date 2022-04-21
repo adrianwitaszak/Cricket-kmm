@@ -8,7 +8,18 @@ data class User(
     val name: String = "",
     val email: String,
     val hashedPass: ByteArray,
-) : Model
+    val favoriteCocktails: MutableList<String>
+) : Model {
+    fun addFavorite(id: String): User {
+        favoriteCocktails.add(id)
+        return this
+    }
+
+    fun removeFavorite(id: String): User {
+        favoriteCocktails.add(id)
+        return this
+    }
+}
 
 @Serializable
 data class UserInput(

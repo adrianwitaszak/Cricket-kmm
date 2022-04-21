@@ -1,6 +1,7 @@
 package com.adwi.buddy.site
 
 import androidx.compose.runtime.*
+import com.adwi.buddy.Greeting
 import com.varabyte.kobweb.compose.ui.Modifier
 import com.varabyte.kobweb.compose.ui.modifiers.*
 import com.varabyte.kobweb.core.App
@@ -8,6 +9,7 @@ import com.varabyte.kobweb.silk.InitSilk
 import com.varabyte.kobweb.silk.InitSilkContext
 import com.varabyte.kobweb.silk.SilkApp
 import com.varabyte.kobweb.silk.components.layout.Surface
+import com.varabyte.kobweb.silk.components.text.Text
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.getColorMode
 import com.varabyte.kobweb.silk.theme.registerBaseStyle
@@ -37,6 +39,8 @@ fun MyApp(content: @Composable () -> Unit) {
             localStorage.setItem(COLOR_MODE_KEY, colorMode.name)
         }
         Surface(Modifier.minHeight(100.vh)) {
+            val greet = Greeting().greeting()
+            Text(text = greet)
             content()
         }
     }
