@@ -7,10 +7,11 @@ import org.litote.kmongo.eq
 import org.litote.kmongo.findOne
 import org.litote.kmongo.getCollection
 
-private const val DATABASE_NAME = "cricket"
+const val DATABASE_NAME = "cricket"
 private const val USER_COLLECTION = "users"
 
 class UserRepositoryImpl(client: MongoClient) : UserRepository {
+
     override lateinit var col: MongoCollection<User>
 
     init {
