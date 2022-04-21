@@ -53,10 +53,6 @@ dependencies {
         implementation(contentNegotiation)
         implementation(logback)
     }
-    with(Koin) {
-//        implementation(ktor)
-//        implementation(logger)
-    }
     with(Kotlin) {
         implementation(stdlib)
     }
