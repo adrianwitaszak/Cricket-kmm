@@ -18,8 +18,19 @@ data class UserInput(
 
 @Serializable
 data class UserProfile(
-    val user: User
-)
+    val user: User,
+    val favoriteCocktails: MutableList<String>
+) {
+    fun addFavorite(id: String): UserProfile {
+        favoriteCocktails.add(id)
+        return this
+    }
+
+    fun removeFavorite(id: String): UserProfile {
+        favoriteCocktails.add(id)
+        return this
+    }
+}
 
 @Serializable
 data class UserResponse(
