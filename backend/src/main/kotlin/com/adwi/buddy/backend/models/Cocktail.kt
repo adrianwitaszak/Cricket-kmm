@@ -19,7 +19,7 @@ data class Ingredient(
 val cocktails = listOf(
     Cocktail(
         id = 1,
-        name = "FROZEN BANANADAIQUIRI",
+        name = "Frozen Bananadaiquiri",
         rating = mutableListOf(5),
         description = """
             Mix these with a wild and crazy tropical shirt and let it all
@@ -84,7 +84,7 @@ Here is a selection of whisky drinks created by the bar team at 878.
 www.878bar.com.ar
         """.trimIndent(),
         ingredients = listOf(
-            Ingredient("MARTINI"),
+            Ingredient("Martini"),
             Ingredient("1 3/4fl oz/50ml Monkey Shoulder whisky"),
             Ingredient("2 1/2 tsp lime juice"),
             Ingredient("1fl oz/25ml fresh banana and cinnamon puree"),
@@ -95,7 +95,7 @@ www.878bar.com.ar
     ),
     Cocktail(
         id = 3,
-        name = "JOHNNY WEISMULLER",
+        name = "Johny Weismuller",
         rating = mutableListOf(4),
         description = """
             Me Tarzan.You Jane.Want drink?
