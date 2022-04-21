@@ -1,14 +1,21 @@
 package com.adwi.buddy.backend.models
 
+import java.util.UUID
+
 data class Cocktail(
-    val id: Int,
+    override val id: String,
     val name: String,
     val rating: MutableList<Int>,
     val description: String,
-    val ingredients: List<Ingredient> = emptyList(),
-) {
-    fun totalRating(): Double {
-        return rating.average()
+    val ingredients: List<String> = emptyList(),
+): Model {
+    fun addRating(value: Int): Cocktail {
+        rating.add(value)
+        return this
+    }
+
+    fun totalRating(): Int {
+        return rating.average().toInt()
     }
 }
 
@@ -18,7 +25,7 @@ data class Ingredient(
 
 val cocktails = listOf(
     Cocktail(
-        id = 1,
+        id = UUID.randomUUID().toString(),
         name = "Frozen Bananadaiquiri",
         rating = mutableListOf(5),
         description = """
@@ -30,17 +37,17 @@ val cocktails = listOf(
             4. Garnish with lime wedge.
         """.trimIndent(),
         ingredients = listOf(
-            Ingredient("11/2ounces light rum"),
-            Ingredient("1/2 ounce lime juice"),
-            Ingredient("1 ounce banana liqueur"),
-            Ingredient("1/4 sliced banana"),
-            Ingredient("1 teaspoon sugar"),
-            Ingredient("1/2 ounce cream"),
-            Ingredient("1/2 cup crushed ice"),
+            "11/2ounces light rum",
+            "1/2 ounce lime juice",
+            "1 ounce banana liqueur",
+            "1/4 sliced banana",
+            "1 teaspoon sugar",
+            "1/2 ounce cream",
+            "1/2 cup crushed ice",
         )
     ),
     Cocktail(
-        id = 2,
+        id = UUID.randomUUID().toString(),
         name = "Hulla Balloo",
         rating = mutableListOf(5),
         description = """
@@ -84,17 +91,17 @@ Here is a selection of whisky drinks created by the bar team at 878.
 www.878bar.com.ar
         """.trimIndent(),
         ingredients = listOf(
-            Ingredient("Martini"),
-            Ingredient("1 3/4fl oz/50ml Monkey Shoulder whisky"),
-            Ingredient("2 1/2 tsp lime juice"),
-            Ingredient("1fl oz/25ml fresh banana and cinnamon puree"),
-            Ingredient("2 1/2 tsp vanilla simple syrup"),
-            Ingredient("ice cubes"),
-            Ingredient("3 BANANA SLICES"),
+            "Martini",
+            "1 3/4fl oz/50ml Monkey Shoulder whisky",
+            "2 1/2 tsp lime juice",
+            "1fl oz/25ml fresh banana and cinnamon puree",
+            "2 1/2 tsp vanilla simple syrup",
+            "ice cubes",
+            "3 BANANA SLICES",
         )
     ),
     Cocktail(
-        id = 3,
+        id = UUID.randomUUID().toString(),
         name = "Johny Weismuller",
         rating = mutableListOf(4),
         description = """
@@ -106,15 +113,15 @@ www.878bar.com.ar
             4.Strain into a cocktail glass.
         """.trimIndent(),
         ingredients = listOf(
-            Ingredient("1 1/2 ounces gin"),
-            Ingredient("1 1/2 ounces Bacardi rum"),
-            Ingredient("1 1/2 ounces lemon juice"),
-            Ingredient("Dash of grenadine"),
-            Ingredient("1/2 teaspoon powdered sugar"),
+            "1 1/2 ounces gin",
+            "1 1/2 ounces Bacardi rum",
+            "1 1/2 ounces lemon juice",
+            "Dash of grenadine",
+            "1/2 teaspoon powdered sugar",
         )
     ),
     Cocktail(
-        id = 4,
+        id = UUID.randomUUID().toString(),
         name = "Mad Hatter",
         rating = mutableListOf(3),
         description = """
@@ -126,10 +133,10 @@ www.878bar.com.ar
             4.Strain into a shot glass.
         """.trimIndent(),
         ingredients = listOf(
-            Ingredient("1 ounce vodka"),
-            Ingredient("1 ounce peach schnapps"),
-            Ingredient("1 ounce lemonade"),
-            Ingredient("1 ounce cola"),
+            "1 ounce vodka",
+            "1 ounce peach schnapps",
+            "1 ounce lemonade",
+            "1 ounce cola",
         )
     )
 )
