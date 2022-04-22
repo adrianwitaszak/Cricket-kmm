@@ -1,15 +1,19 @@
 package com.adwi.buddy.backend.service
 
-import com.adwi.buddy.backend.models.Cocktail
+import com.adwi.buddy.models.Cocktail
 import com.adwi.buddy.backend.repository.CocktailRepository
-import com.adwi.buddy.backend.repository.UserRepository
+import com.adwi.buddy.backend.repository.UserRepositoryImpl
+import com.adwi.buddy.models.CocktailsPage
 
 class CocktailService(
     private val cocktailRepository: CocktailRepository,
-    private val userRepository: UserRepository
+    private val userRepository: UserRepositoryImpl
 ) {
     fun getAll(): List<Cocktail> {
         return cocktailRepository.getAll()
+    }
+    fun getAllPaged(page:Int, size: Int = 20): CocktailsPage {
+        return cocktailRepository.getAllPaged(page, size)
     }
 
     fun getAllWithFilteredIngredients(ingredients: List<String>, include: Boolean): List<Cocktail> {
@@ -25,9 +29,5 @@ class CocktailService(
         val newCocktail = cocktail.addRating(rating)
         cocktailRepository.update(newCocktail)
         return newCocktail.totalRating()
-    }
-
-    fun addCocktailToUserFavorites(cocktailId: String) {
-        userRepository
     }
 }

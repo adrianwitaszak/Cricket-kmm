@@ -54,7 +54,7 @@ dependencies {
         implementation(logback)
     }
     with(Kotlin) {
-        implementation(stdlib)
+//        implementation(stdlib)
     }
 
 //    with(TestDependencies) {

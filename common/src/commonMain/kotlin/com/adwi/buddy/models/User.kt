@@ -1,4 +1,4 @@
-package com.adwi.buddy.backend.models
+package com.adwi.buddy.models
 
 import kotlinx.serialization.Serializable
 

@@ -4,7 +4,7 @@ plugins {
     with(Plugins) {
         kotlin(KOTLIN_MULTIPLATFORM)
         kotlin(COCAPODS)
-//        id(JETBRAINS_COMPOSE) version Compose.jetbrainsComposeVersion
+        kotlin(SERIALIZATION)
         id(ANDROID_LIBRARY)
         id(SQL_DELIGHT)
         id(SHADOW)
@@ -64,7 +64,6 @@ kotlin {
             }
             with(Koin) {
                 api(core)
-                api(logger)
                 api(test)
             }
             implementation(Ktor.Client.clientCore)
@@ -79,7 +78,7 @@ kotlin {
             implementation(SqlDelight.sqliteJs)
         }
         sourceSets["jvmMain"].dependencies {
-
+            api(Koin.logger)
         }
         val commonTest by getting {
             dependencies {

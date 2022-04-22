@@ -1,6 +1,6 @@
 package com.adwi.buddy.backend.routes
 
-import com.adwi.buddy.backend.models.UserInput
+import com.adwi.buddy.models.UserInput
 import com.adwi.buddy.backend.service.AuthService
 import io.ktor.http.*
 import io.ktor.server.application.*

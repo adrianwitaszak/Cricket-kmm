@@ -1,6 +1,6 @@
 package com.adwi.buddy.backend.repository
 
-import com.adwi.buddy.backend.models.Model
+import com.adwi.buddy.models.Model
 import com.mongodb.client.MongoCollection
 import org.litote.kmongo.eq
 import org.litote.kmongo.findOne
@@ -12,8 +12,7 @@ interface RepositoryInterface<T> {
 
     fun getById(id: String): T {
         return try {
-            col.findOne(Model::id eq id)
-                ?: throw Exception("No item with that ID exists")
+            col.findOne(Model::id eq id) ?: throw Exception("No item with that ID exists")
         } catch (t: Throwable) {
             throw Exception("Cannot get item")
         }
@@ -30,8 +29,7 @@ interface RepositoryInterface<T> {
 
     fun delete(id: String): Boolean {
         return try {
-            col.findOneAndDelete(Model::id eq id)
-                ?: throw Exception("No item with that ID exists")
+            col.findOneAndDelete(Model::id eq id) ?: throw Exception("No item with that ID exists")
             true
         } catch (t: Throwable) {
             throw Exception("Cannot delete item")
@@ -54,8 +52,7 @@ interface RepositoryInterface<T> {
                 entry,
                 updateOnlyNotNullProperties = true
             )
-            col.findOne(Model::id eq entry.id)
-                ?: throw Exception("No item with that ID exists")
+            col.findOne(Model::id eq entry.id) ?: throw Exception("No item with that ID exists")
         } catch (t: Throwable) {
             throw Exception("Cannot update item")
         }

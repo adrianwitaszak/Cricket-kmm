@@ -2,6 +2,7 @@ object Plugins {
     const val ANDROID_APPLICATION = "com.android.application"
     const val ANDROID_LIBRARY = "com.android.library"
     const val JVM = "jvm"
+    const val KOTLIN = "kotlin"
     const val KOTLIN_ANDROID = "android"
     const val KOTLIN_KAPT = "kapt"
     const val KOTLIN_MULTIPLATFORM = "multiplatform"

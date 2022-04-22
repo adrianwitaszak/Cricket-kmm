@@ -1,27 +1,42 @@
-package com.adwi.buddy.backend.models
+package com.adwi.buddy.backend.repository.cocktail
 
-import java.util.UUID
+import com.adwi.buddy.backend.repository.RepositoryInterface
+import com.adwi.buddy.backend.repository.user.DATABASE_NAME
+import com.adwi.buddy.models.Cocktail
+import com.adwi.buddy.models.CocktailsPage
+import com.adwi.buddy.models.PagingInfo
+import com.mongodb.client.MongoClient
+import com.mongodb.client.MongoCollection
+import org.litote.kmongo.getCollection
+import java.util.*
 
-data class Cocktail(
-    override val id: String,
-    val name: String,
-    val rating: MutableList<Int>,
-    val description: String,
-    val ingredients: List<String> = emptyList(),
-): Model {
-    fun addRating(value: Int): Cocktail {
-        rating.add(value)
-        return this
+class CocktailRepositoryImpl(client: MongoClient): CocktailRepository {
+
+    override lateinit var col: MongoCollection<Cocktail>
+
+    init {
+        val database = client.getDatabase(DATABASE_NAME)
+        col = database.getCollection()
     }
 
-    fun totalRating(): Int {
-        return rating.average().toInt()
+    override fun getAllPaged(page: Int, size: Int): CocktailsPage {
+        try {
+            val skips = page * size
+            val cocktails = col.find().skip(skips).limit(size)
+            val results = cocktails.asIterable().map { it }
+            val totalCocktails = col.countDocuments()
+            val totalPages = (totalCocktails / size) + 1
+            val next = if (results.isNotEmpty()) page + 1 else null
+            val prev = if (page > 0) page - 1 else null
+            val info = PagingInfo(totalCocktails.toInt(), totalPages.toInt(), next, prev)
+            return CocktailsPage(results, info)
+        } catch (t: Throwable) {
+            throw Exception("Cannot get cocktails paged")
+        }
     }
 }
 
-data class Ingredient(
-    val name: String,
-)
+
 
 val cocktails = listOf(
     Cocktail(
