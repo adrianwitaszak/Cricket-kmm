@@ -1,12 +1,12 @@
 package com.adwi.buddy.backend.service
 
+import com.adwi.buddy.backend.repository.user.UserRepository
 import com.adwi.buddy.models.User
-import com.adwi.buddy.backend.repository.UserRepositoryImpl
 
 class UserService(
-    private val userRepository: UserRepositoryImpl,
+    private val userRepository: UserRepository,
 ) {
-    fun getUser(userId: String): User {
+    fun getUserById(userId: String): User {
         return userRepository.getById(userId)
     }
 

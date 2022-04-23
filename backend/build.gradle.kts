@@ -1,3 +1,4 @@
+
 plugins {
     application
     kotlin(Plugins.JVM)
@@ -53,14 +54,12 @@ dependencies {
         implementation(contentNegotiation)
         implementation(logback)
     }
-    with(Kotlin) {
-//        implementation(stdlib)
+    with(TestDependencies) {
+        testImplementation(kotlinTest)
+        testImplementation(ktorTest)
+        testImplementation(mockk)
+        testImplementation(koinTestJUnit4)
+        testImplementation(truthishJvm)
+        testImplementation("de.bwaldvogel:mongo-java-server:1.39.0")
     }
-
-//    with(TestDependencies) {
-//        testImplementation(kotlinTest)
-//        testImplementation(ktorTest)
-//        testImplementation(mockk)
-//        testImplementation(koinTestJUnit4)
-//    }
 }

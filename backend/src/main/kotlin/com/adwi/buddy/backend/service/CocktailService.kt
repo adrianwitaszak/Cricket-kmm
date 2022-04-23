@@ -1,8 +1,8 @@
 package com.adwi.buddy.backend.service
 
 import com.adwi.buddy.models.Cocktail
-import com.adwi.buddy.backend.repository.CocktailRepository
-import com.adwi.buddy.backend.repository.UserRepositoryImpl
+import com.adwi.buddy.backend.repository.cocktail.CocktailRepository
+import com.adwi.buddy.backend.repository.user.UserRepositoryImpl
 import com.adwi.buddy.models.CocktailsPage
 
 class CocktailService(

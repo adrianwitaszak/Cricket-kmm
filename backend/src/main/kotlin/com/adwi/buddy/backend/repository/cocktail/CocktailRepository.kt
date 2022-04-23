@@ -6,5 +6,4 @@ import com.adwi.buddy.models.CocktailsPage
 
 interface CocktailRepository: RepositoryInterface<Cocktail> {
     fun getAllPaged(page: Int, size: Int): CocktailsPage
-
 }

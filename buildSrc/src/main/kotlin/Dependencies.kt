@@ -199,6 +199,7 @@ object TestDependencies {
     const val turbine = "0.6.0"
     const val kotest = "4.6.1"
     const val XTruth = "1.4.0"
+    const val truthish = "0.6.2"
     const val GoogleTruth = "1.0.1"
     const val junit5 = "5.7.2"
     const val mockkVersion = "1.12.3"
@@ -221,6 +222,9 @@ object TestDependencies {
     const val testCore = "androidx.test:core:$test_core"
     const val archCore = "androidx.arch.core:core-testing:$arch_core"
     const val truth = "com.google.truth:truth:$GoogleTruth"
+    const val truthishKotlin = "com.varabyte.truthish:truthish:$truthish"
+    const val truthishJvm = "com.varabyte.truthish:truthish-jvm:$truthish"
+    const val truthishJs = "com.varabyte.truthish:truthish-js:$truthish"
     const val mockk = "io.mockk:mockk:$mockkVersion"
     const val koinTestJUnit4 = "io.insert-koin:koin-test-junit4:${Koin.version}"
 
