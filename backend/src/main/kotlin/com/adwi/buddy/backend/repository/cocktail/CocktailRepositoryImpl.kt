@@ -1,22 +1,12 @@
 package com.adwi.buddy.backend.repository.cocktail
 
-import com.adwi.buddy.backend.repository.user.DATABASE_NAME
 import com.adwi.buddy.models.Cocktail
 import com.adwi.buddy.models.CocktailsPage
 import com.adwi.buddy.models.PagingInfo
-import com.mongodb.client.MongoClient
 import com.mongodb.client.MongoCollection
-import org.litote.kmongo.getCollection
 import java.util.*
 
-class CocktailRepositoryImpl(client: MongoClient): CocktailRepository {
-
-    override lateinit var col: MongoCollection<Cocktail>
-
-    init {
-        val database = client.getDatabase(DATABASE_NAME)
-        col = database.getCollection()
-    }
+class CocktailRepositoryImpl(override var col: MongoCollection<Cocktail>) : CocktailRepository {
 
     override fun getAllPaged(page: Int, size: Int): CocktailsPage {
         try {
@@ -34,8 +24,6 @@ class CocktailRepositoryImpl(client: MongoClient): CocktailRepository {
         }
     }
 }
-
-
 
 val cocktails = listOf(
     Cocktail(

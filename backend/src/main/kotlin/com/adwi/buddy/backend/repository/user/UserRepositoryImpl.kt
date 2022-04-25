@@ -12,12 +12,6 @@ private const val USER_COLLECTION = "users"
 
 class UserRepositoryImpl(override var col: MongoCollection<User>) : UserRepository {
 
-
-
-    init {
-
-    }
-
     override fun getUserByEmail(email: String?): User? {
         return try {
             col.findOne(User::email eq email)

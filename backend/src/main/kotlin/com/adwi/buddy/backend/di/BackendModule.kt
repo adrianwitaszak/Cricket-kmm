@@ -1,7 +1,9 @@
 package com.adwi.buddy.backend.di
 
+import com.adwi.buddy.backend.repository.cocktail.CocktailRepository
 import com.adwi.buddy.backend.repository.cocktail.CocktailRepositoryImpl
 import com.adwi.buddy.backend.repository.user.DATABASE_NAME
+import com.adwi.buddy.backend.repository.user.UserRepository
 import com.adwi.buddy.backend.repository.user.UserRepositoryImpl
 import com.adwi.buddy.backend.service.AuthService
 import com.adwi.buddy.backend.service.JwtConfig
@@ -24,10 +26,8 @@ val backendModule = module {
     val cocktailMongoCollection = database.getCollection<Cocktail>()
 
     single { JwtConfig("secret") }
-    single { userMongoCollection }
-    single { cocktailMongoCollection }
-    single { UserRepositoryImpl(get()) }
-    single { CocktailRepositoryImpl(get()) }
-    single { UserService(get()) }
+    single<UserRepository> { UserRepositoryImpl(userMongoCollection) }
+    single<CocktailRepository> { CocktailRepositoryImpl(cocktailMongoCollection) }
+    single { UserService(get(), get()) }
     single { AuthService(get(), get()) }
 }

@@ -5,7 +5,6 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class User(
     override val id: String,
-    val name: String = "",
     val email: String,
     val hashedPass: ByteArray,
     val favoriteCocktails: MutableList<String> = mutableListOf()
