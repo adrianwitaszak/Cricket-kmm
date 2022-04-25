@@ -11,19 +11,20 @@ import io.ktor.server.auth.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import io.ktor.util.pipeline.*
 import org.koin.java.KoinJavaComponent.inject
 
 fun Application.configureRouting() {
 
-    val authService by inject<AuthService>(AuthService::class.java)
-    val userService by inject<UserService>(UserService::class.java)
+    val authService: AuthService by inject(AuthService::class.java)
+    val userService: UserService by inject(UserService::class.java)
 
     routing {
         get("/") {
             call.respondText("Hello Cricket!")
         }
         post("/login") {
-            val userInput = call.receive<UserInput>()
+            val userInput = receiveUserInput()
             val result = authService.signIn(userInput)
 
             result ?: run {
@@ -33,7 +34,7 @@ fun Application.configureRouting() {
             call.respond(result.token)
         }
         post("/register") {
-            val userInput = call.receive<UserInput>()
+            val userInput = receiveUserInput()
             val result = authService.signUp(userInput)
 
             result?.let {
@@ -45,18 +46,19 @@ fun Application.configureRouting() {
         }
         authenticate {
             get("/me") {
-                val jwtUser = call.authentication.principal as JwtConfig.JwtUser
+                val jwtUser = getCurrentUser()
                 val user = userService.getUserById(jwtUser.userId)
                 call.respond(user)
             }
             post("/me") {
-                val jwtUser = call.authentication.principal as JwtConfig.JwtUser
-                val userInput = call.receive<UserInput>()
+                val jwtUser = getCurrentUser()
+                val userInput = receiveUserInput()
                 userService.updateUserCredentials(
                     userId = jwtUser.userId,
                     email = userInput.email,
                     password = userInput.password
                 )
+                call.respond("Credentials updated")
             }
             get("/me/cocktails") {
 
@@ -64,3 +66,9 @@ fun Application.configureRouting() {
         }
     }
 }
+
+private fun PipelineContext<Unit, ApplicationCall>.getCurrentUser() =
+    call.authentication.principal as JwtConfig.JwtUser
+
+private suspend fun PipelineContext<Unit, ApplicationCall>.receiveUserInput() =
+    call.receive<UserInput>()
