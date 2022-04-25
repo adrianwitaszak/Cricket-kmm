@@ -1,12 +1,23 @@
 package com.adwi.buddy.backend.repository.cocktail
 
+import com.adwi.buddy.backend.repository.user.DATABASE_NAME
 import com.adwi.buddy.models.Cocktail
 import com.adwi.buddy.models.CocktailsPage
 import com.adwi.buddy.models.PagingInfo
+import com.adwi.buddy.models.User
+import com.mongodb.client.MongoClient
 import com.mongodb.client.MongoCollection
+import org.litote.kmongo.getCollection
 import java.util.*
 
-class CocktailRepositoryImpl(override var col: MongoCollection<Cocktail>) : CocktailRepository {
+class CocktailRepositoryImpl(client: MongoClient) : CocktailRepository {
+
+    override lateinit var col: MongoCollection<Cocktail>
+
+    init {
+        val database = client.getDatabase(DATABASE_NAME)
+        col = database.getCollection()
+    }
 
     override fun getAllPaged(page: Int, size: Int): CocktailsPage {
         try {
@@ -21,6 +32,17 @@ class CocktailRepositoryImpl(override var col: MongoCollection<Cocktail>) : Cock
             return CocktailsPage(results, info)
         } catch (t: Throwable) {
             throw Exception("Cannot get cocktails paged")
+        }
+    }
+
+    override fun getUserCocktails(user: User): List<Cocktail> {
+        return try {
+            val cocktailIds = user.favoriteCocktails
+            cocktailIds.map { id ->
+                getById(id)
+            }
+        } catch (e: Exception) {
+            throw Exception("Cannot get cocktails")
         }
     }
 }

@@ -18,6 +18,10 @@ data class Cocktail(
     }
 }
 
+data class CocktailInput(
+    override val id: String
+): Model
+
 data class CocktailsPage(
     val results: List<Cocktail>,
     val info: PagingInfo,

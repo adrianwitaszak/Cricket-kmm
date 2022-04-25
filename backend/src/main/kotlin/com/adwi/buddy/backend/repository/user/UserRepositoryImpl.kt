@@ -10,7 +10,14 @@ import org.litote.kmongo.getCollection
 const val DATABASE_NAME = "cricket"
 private const val USER_COLLECTION = "users"
 
-class UserRepositoryImpl(override var col: MongoCollection<User>) : UserRepository {
+class UserRepositoryImpl(client: MongoClient) : UserRepository {
+
+    override lateinit var col: MongoCollection<User>
+
+    init {
+        val database = client.getDatabase(DATABASE_NAME)
+        col = database.getCollection()
+    }
 
     override fun getUserByEmail(email: String?): User? {
         return try {

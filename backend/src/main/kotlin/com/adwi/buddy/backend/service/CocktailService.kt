@@ -2,13 +2,17 @@ package com.adwi.buddy.backend.service
 
 import com.adwi.buddy.models.Cocktail
 import com.adwi.buddy.backend.repository.cocktail.CocktailRepository
-import com.adwi.buddy.backend.repository.user.UserRepositoryImpl
+import com.adwi.buddy.backend.repository.user.UserRepository
 import com.adwi.buddy.models.CocktailsPage
+import com.adwi.buddy.models.User
 
 class CocktailService(
     private val cocktailRepository: CocktailRepository,
-    private val userRepository: UserRepositoryImpl
 ) {
+
+    fun getUserFavoriteCocktails(user: User): List<Cocktail> {
+        return cocktailRepository.getUserCocktails(user)
+    }
     fun getAll(): List<Cocktail> {
         return cocktailRepository.getAll()
     }

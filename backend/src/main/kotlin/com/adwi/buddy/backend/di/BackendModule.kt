@@ -6,6 +6,7 @@ import com.adwi.buddy.backend.repository.user.DATABASE_NAME
 import com.adwi.buddy.backend.repository.user.UserRepository
 import com.adwi.buddy.backend.repository.user.UserRepositoryImpl
 import com.adwi.buddy.backend.service.AuthService
+import com.adwi.buddy.backend.service.CocktailService
 import com.adwi.buddy.backend.service.JwtConfig
 import com.adwi.buddy.backend.service.UserService
 import com.adwi.buddy.models.Cocktail
@@ -15,19 +16,14 @@ import org.litote.kmongo.KMongo
 import org.litote.kmongo.getCollection
 import java.security.InvalidKeyException
 
-private val mongoUri = System.getenv("MONGO_URI") ?: InvalidKeyException("Can't get Mongo key")
+private val mongoUri = System.getenv("MONGO_URI") ?: "mongodb+srv://adrianwitaszak:Anabelle2013@cricket.hwwlg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 val backendModule = module {
-
-    val mongoClient = KMongo.createClient("mongodb+srv://adrianwitaszak:Anabelle2013@cricket.hwwlg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
-    val database = mongoClient.getDatabase(DATABASE_NAME)
-
-    val userMongoCollection = database.getCollection<User>()
-    val cocktailMongoCollection = database.getCollection<Cocktail>()
-
     single { JwtConfig("secret") }
-    single<UserRepository> { UserRepositoryImpl(userMongoCollection) }
-    single<CocktailRepository> { CocktailRepositoryImpl(cocktailMongoCollection) }
+    single { KMongo.createClient(mongoUri) }
+    single<UserRepository> { UserRepositoryImpl(get()) }
+    single<CocktailRepository> { CocktailRepositoryImpl(get()) }
     single { UserService(get(), get()) }
     single { AuthService(get(), get()) }
+    single { CocktailService(get()) }
 }

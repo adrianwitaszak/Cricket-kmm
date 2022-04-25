@@ -11,9 +11,15 @@ class UserService(
         return userRepository.getById(userId)
     }
 
-    fun updateUserCocktailFavorites(cocktailId: String, userId: String): Boolean {
+    fun addCocktailToFavorites(cocktailId: String, userId: String): Boolean {
         return updateUserById(userId) {user ->
             user.addFavorite(cocktailId)
+        }
+    }
+
+    fun removeCocktailFromFavorites(cocktailId: String, userId: String): Boolean {
+        return updateUserById(userId) {user ->
+            user.removeFavorite(cocktailId)
         }
     }
 

@@ -41,7 +41,7 @@ class UserServiceTest {
         var user = userService.getUserById(userMock.id)
 //        assertThat(user.favoriteCocktails.size).isEqualTo(0)
 
-        userService.updateUserCocktailFavorites("c1", userMock.id)
+        userService.addCocktailToFavorites("c1", userMock.id)
 
         user = userService.getUserById(userMock.id)
 //        assertThat(user.favoriteCocktails.size).isEqualTo(1)

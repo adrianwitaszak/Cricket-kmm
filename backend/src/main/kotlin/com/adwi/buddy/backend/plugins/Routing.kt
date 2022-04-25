@@ -1,9 +1,10 @@
 package com.adwi.buddy.backend.plugins
 
 import com.adwi.buddy.backend.service.AuthService
+import com.adwi.buddy.backend.service.CocktailService
 import com.adwi.buddy.backend.service.JwtConfig
 import com.adwi.buddy.backend.service.UserService
-import com.adwi.buddy.models.User
+import com.adwi.buddy.models.CocktailInput
 import com.adwi.buddy.models.UserInput
 import io.ktor.http.*
 import io.ktor.server.application.*
@@ -18,6 +19,7 @@ fun Application.configureRouting() {
 
     val authService: AuthService by inject(AuthService::class.java)
     val userService: UserService by inject(UserService::class.java)
+    val cocktailService: CocktailService by inject(CocktailService::class.java)
 
     routing {
         get("/") {
@@ -46,29 +48,54 @@ fun Application.configureRouting() {
         }
         authenticate {
             get("/me") {
-                val jwtUser = getCurrentUser()
-                val user = userService.getUserById(jwtUser.userId)
-                call.respond(user)
+                withCurrentUser { jwtUser ->
+                    val user = userService.getUserById(jwtUser.userId)
+                    call.respond(user)
+                }
             }
             post("/me") {
-                val jwtUser = getCurrentUser()
-                val userInput = receiveUserInput()
-                userService.updateUserCredentials(
-                    userId = jwtUser.userId,
-                    email = userInput.email,
-                    password = userInput.password
-                )
-                call.respond("Credentials updated")
+                withCurrentUser { jwtUser ->
+                    val userInput = receiveUserInput()
+                    val result = userService.updateUserCredentials(
+                        userId = jwtUser.userId,
+                        email = userInput.email,
+                        password = userInput.password
+                    )
+                    println(result)
+                    call.respond("Credentials updated")
+                }
             }
             get("/me/cocktails") {
-
+                withCurrentUser { jwtUser ->
+                    val user = userService.getUserById(jwtUser.userId)
+                    val cocktails = cocktailService.getUserFavoriteCocktails(user)
+                    call.respond(cocktails)
+                }
+            }
+            post("/me/cocktails") {
+                withCurrentUser { jwtUser ->
+                    val userInput = call.receive<CocktailInput>()
+                    val result = userService.addCocktailToFavorites(jwtUser.userId, userInput.id)
+                    println(result)
+                    call.respond("Added ${userInput.id}")
+                }
+            }
+            delete("/me/cocktails") {
+                withCurrentUser { jwtUser ->
+                    val userInput = call.receive<CocktailInput>()
+                    val result = userService.removeCocktailFromFavorites(jwtUser.userId, userInput.id)
+                    println(result)
+                    call.respond("Deleted ${userInput.id}")
+                }
             }
         }
     }
 }
 
-private fun PipelineContext<Unit, ApplicationCall>.getCurrentUser() =
-    call.authentication.principal as JwtConfig.JwtUser
+private suspend fun PipelineContext<Unit, ApplicationCall>.withCurrentUser(block: suspend (JwtConfig.JwtUser) -> Unit) {
+    val jwtUser = call.authentication.principal as JwtConfig.JwtUser
+    block(jwtUser)
+}
 
 private suspend fun PipelineContext<Unit, ApplicationCall>.receiveUserInput() =
     call.receive<UserInput>()
